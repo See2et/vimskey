@@ -85,8 +85,9 @@ export async function main(denops: Denops): Promise<void> {
 
       if (noteBody) {
         return await sendNoteReq(denops, { body: noteBody });
-      } else {
-        throw new Error(`noteBody: ${noteBody}`)
+      } else if (noteBody == null) {
+        return null;
+        // throw new Error(`noteBody: ${noteBody}`)
         // throw new Error("[User input]Note body is empty");
       }
     },
